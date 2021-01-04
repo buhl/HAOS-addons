@@ -20,6 +20,14 @@ I also have an [account][HAcommunityaccount] in the [Home Assistant Community][H
 
 ### List of add-ons in this repository
 
+#### [MinIO](https://github.com/buhl/HAOS-addon-minio)
+S3 compatible onject store
+ * [buhl/minio-aarch64:2020.12.29-r0](https://hub.docker.com/r/buhl/minio-aarch64)
+ * [buhl/minio-amd64:2020.12.29-r0](https://hub.docker.com/r/buhl/minio-amd64)
+ * [buhl/minio-armhf:2020.12.29-r0](https://hub.docker.com/r/buhl/minio-armhf)
+ * [buhl/minio-armv7:2020.12.29-r0](https://hub.docker.com/r/buhl/minio-armv7)
+ * [buhl/minio-i386:2020.12.29-r0](https://hub.docker.com/r/buhl/minio-i386)
+
 #### [Radicale](https://github.com/buhl/HAOS-addon-radicale)
 Free and Open-Source CalDAV and CardDAV Server
  * [buhl/radicale-aarch64:3.0.6-r0](https://hub.docker.com/r/buhl/radicale-aarch64)

@@ -1,0 +1,18 @@
+diff --git a/buildscripts/gen-ldflags.go b/buildscripts/gen-ldflags.go
+index 9401ea9..0222cf1 100644
+--- a/buildscripts/gen-ldflags.go
++++ b/buildscripts/gen-ldflags.go
+@@ -66,5 +66,12 @@ func commitID() string {
+ }
+ 
+ func main() {
+-	fmt.Println(genLDFlags(time.Now().UTC().Format(time.RFC3339)))
++	var version string
++	if len(os.Args) > 1 {
++		version = os.Args[1]
++	} else {
++		version = time.Now().UTC().Format(time.RFC3339)
++	}
++
++	fmt.Println(genLDFlags(version))
+ }

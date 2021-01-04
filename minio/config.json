@@ -1,0 +1,52 @@
+{
+    "name": "MinIO",
+    "version": "2020.12.29-r0",
+    "slug": "minio",
+    "description": "S3 compatible onject store",
+    "url": "https://github.com/buhl/HAOS-addon-minio",
+    "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
+    "startup": "services",
+    "webui": "http://[HOST]:[PORT:9000]/",
+    "boot": "auto",
+    "image": "buhl/minio-{arch}",
+    "apparmor": true,
+    "init": false,
+    "stage": "experimental",
+    "map": [
+        "addons:rw"
+    ],
+    "options": {
+        "credentials": {
+            "access_key": "minio",
+            "secret_key": "minio123"
+        }
+    },
+    "ports": {
+        "9000/tcp": 9000,
+        "9022/tcp": 9022
+    },
+    "ports_description": {
+        "9000/tcp": "MinIO http port",
+        "9022/tcp": "MinIO ssh port"
+    },
+    "schema": {
+        "authorized_keys": ["str?"],
+        "credentials": {
+            "access_key": "str",
+            "secret_key": "str",
+            "old_access_key": "str?",
+            "old_secret_key": "str?"
+        },
+        "region": {
+            "name": "str?",
+            "comment": "str?"
+        },
+        "owner": {
+            "user": "str?",
+            "group": "str?",
+            "uid": "int(1000,)?",
+            "gid": "int(1000,)?"
+        },
+        "size": "int(1, 8)"
+    }
+}

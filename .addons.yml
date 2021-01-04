@@ -5,3 +5,7 @@ addons:
     repository: buhl/HAOS-addon-radicale
     target: radicale
     image: buhl/radicale-{arch}
+  minio:
+    repository: buhl/HAOS-addon-minio
+    target: minio
+    image: buhl/minio-{arch}

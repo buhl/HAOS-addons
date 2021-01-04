@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bashio
+if ! bashio::config.has_value "authorized_keys"; then
+    exec sleep 864000
+    bashio::exit.nok
+fi
+
+bashio::log.info "Starting Dropbear"
+set -a
+source /addons/minio/dropbear/.dropbear.env
+set +a
+rm /addons/minio/dropbear/.dropbear.env
+
+exec dropbear -REFjkswg -p ${PORT} \
+ -b /etc/motd \
+ -G ${MINIO_GROUPNAME} \
+ -c /usr/local/bin/mcjail
