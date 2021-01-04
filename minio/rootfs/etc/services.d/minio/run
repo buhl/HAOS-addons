@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bashio
+bashio::log.info "Starting MinIO"
+bashio::log.info "Sourcing env"
+
+set -a
+source /addons/minio/.minio.env
+set +a
+rm /addons/minio/.minio.env
+
+if [ -n "${MINIO_USERNAME}" ]; then
+    exec su ${MINIO_USERNAME} -s /bin/ash -c "/usr/bin/minio server --address :${PORT} ${DATA_DIRS}"
+else
+    exec /usr/bin/minio server --address :${PORT} ${DATA_DIRS}
+fi

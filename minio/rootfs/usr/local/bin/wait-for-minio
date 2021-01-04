@@ -1,0 +1,18 @@
+#!/usr/bin/with-contenv bashio
+# vim: filetype=sh
+
+set -a
+source /addons/minio/.minio.env
+set +a
+
+SLEEP_TIME=1
+
+echo -n "Waiting for minio ."
+while true; do
+    echo -n "."
+    sleep ${SLEEP_TIME}
+    su ${MINIO_USERNAME} -c "/usr/bin/mc admin info minio >/dev/null 2>&1" && break || continue
+done
+
+echo ". minio ready!"
+

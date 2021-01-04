@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ -n "${SSH_ORIGINAL_COMMAND}" ]; then
+    /usr/bin/mc ${SSH_ORIGINAL_COMMAND[@]}
+    exit $?
+fi
+
+while true; do
+    HISTORY=/addons/minio/dropbear/.myscript_history
+    USERINPUT=$(rlwrap -H $HISTORY -S "mc > " /bin/ash -c 'read -p "mc > " dd && echo $dd')
+    if [ "$?" -ne "0" ]; then
+        break;
+    fi
+    case ${USERINPUT} in
+        help)
+            USERINPUT="--help"
+            ;;
+        quit | exit)
+            break;
+            ;;
+    esac
+    /usr/bin/mc ${USERINPUT[@]}
+done
